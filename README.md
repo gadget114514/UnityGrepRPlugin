@@ -8,4 +8,6 @@ recursively.
 
 It works like grep with -r option .
 
+Docking window is useful.
+
 
