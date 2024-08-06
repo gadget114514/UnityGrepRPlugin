@@ -11,5 +11,7 @@ It works like grep with -r option .
 Docking window is useful.
 
 ![Cover image](/Untitled.png?raw=true "Cover")
-![SS image](/screenshot1.jpg?raw=true "SS")
 
+ScreenShot
+![SS image](/screenshot1.jpg?raw=true "SS")
+This plugin has No relation to Bakery.
