@@ -11,5 +11,5 @@ It works like grep with -r option .
 Docking window is useful.
 
 ![Cover image](/Untitled.png?raw=true "Cover")
-![SS image](/screenshot1.png?raw=true "SS")
+![SS image](/screenshot1.jpg?raw=true "SS")
 
