@@ -2,10 +2,10 @@
 
 This plugin searches string pattern in directory.
 
-# How to use
+# Getting Started
 [Tools]-[GrepR] opens window.
 
-# Desc
+# How to use
 Input Search String and Press Find Button to execute searching the string pattern in the folder
 recursively.
 
