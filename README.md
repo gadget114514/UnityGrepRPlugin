@@ -1,9 +1,14 @@
 # UnityGrepRPlugin
 
-This plugin searches string pattern in directory.
+This Unity plugin searches string pattern in directory.
+
+# Install
+Download grepr.unitypackage from repository (as raw data)
+Import grepr.unitypackage. 
 
 # Getting Started
 [Tools]-[GrepR] opens window.
+
 
 # How to use
 Input Search String and Press Find Button to execute searching the string pattern in the folder
