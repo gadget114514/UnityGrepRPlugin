@@ -1,3 +1,4 @@
+![Cover image](grepr-cover.jpg?raw=true "Cover")
 # UnityGrepRPlugin
 
 This Unity plugin searches string pattern in directory.
@@ -18,8 +19,7 @@ It works like "grep with -r option" or "find . -name \*.cs -exec grep string {} 
 
 
 
-# Cover
-![Cover image](grepr-cover.jpg?raw=true "Cover")
+
 
 # ScreenShot
 ![SS image](/screenshot1.jpg?raw=true "SS")
