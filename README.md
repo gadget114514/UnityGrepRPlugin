@@ -19,7 +19,7 @@ It works like "grep with -r option" or "find . -name \*.cs -exec grep string {} 
 
 
 # Cover
-![Cover image](/Untitled.png?raw=true "Cover")
+![Cover image](grepr-cover.jpg?raw=true "Cover")
 
 # ScreenShot
 ![SS image](/screenshot1.jpg?raw=true "SS")
