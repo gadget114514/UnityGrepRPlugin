@@ -7,20 +7,21 @@ Download grepr.unitypackage from repository (as raw data)
 Import grepr.unitypackage. 
 
 # Getting Started
-[Tools]-[GrepR] opens window.
-
+[Tools]-[GrepR] opens Editor window like following image.
+You can drag the window as a docking window.
 
 # How to use
 Input Search String and Press Find Button to execute searching the string pattern in the folder
 recursively.
 
-It works like grep with -r option .
+It works like "grep with -r option" or "find . -name \*.cs -exec grep string {} \;"  .
 
-Docking window is useful.
+
 
 # Cover
 ![Cover image](/Untitled.png?raw=true "Cover")
 
 # ScreenShot
 ![SS image](/screenshot1.jpg?raw=true "SS")
+
 This plugin has No relation to Bakery.
