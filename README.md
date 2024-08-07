@@ -7,7 +7,7 @@ Download grepr.unitypackage from repository (as raw data)
 Import grepr.unitypackage. 
 
 # Getting Started
-[Tools]-[GrepR] opens Editor window like following image.
+[Tools]-[GrepR by 2nek] opens Editor window like following image.
 You can drag the window as a docking window.
 
 # How to use
