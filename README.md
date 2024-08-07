@@ -17,7 +17,7 @@ recursively.
 
 It works like "grep with -r option" or "find . -name \*.cs -exec grep string {} \;"  .
 
-
+Click file name and line (blue colored) to invoke text editor and locate the cursor.
 
 
 
