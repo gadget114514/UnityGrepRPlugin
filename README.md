@@ -1,7 +1,7 @@
 ![Cover image](grepr-cover.jpg?raw=true "Cover")
-# UnityGrepRPlugin
+# UnityGrepRPlugin: GrepR Unity Editor Plugin
 
-This Unity plugin searches string pattern in directory.
+This Unity Editor plugin searches string pattern in directory.
 
 # Install
 Download grepr.unitypackage from repository (as raw data)
