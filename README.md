@@ -5,6 +5,7 @@ This Unity Editor plugin searches string pattern in directory.
 
 # Notice
 Unity 2022: it works well
+
 Unity 2023: cursor not located to the right position
 
 # Install
