@@ -29,7 +29,8 @@ public class GrepR : EditorWindow
     bool ignoreCase = true;
 	bool  cancel = false;
 	bool verbose = false;
-	
+	bool toConsole = false;
+	bool useExtEditor = false;
     public static string ReplaceLastOccurrence(string source, string find, string replace)
     {
         int place = source.LastIndexOf(find);
@@ -51,9 +52,13 @@ public class GrepR : EditorWindow
 	    if (UnityEditor.EditorPrefs.HasKey("GrepRFilePat")) {
 	    	text3 = UnityEditor.EditorPrefs.GetString("GrepRFilePat");
 	    }
+	    if (UnityEditor.EditorPrefs.HasKey("GrepRtoConsole")) {
+	    	toConsole = UnityEditor.EditorPrefs.GetBool("GrepRtoConsole");
+	    }
 	    var oldtext1 = text1;
 	    var oldtext2 = text2;
 	    var oldtext3 = text3;
+	    var oldtoConsole = toConsole;
 
         GUI.SetNextControlName(NAME);
 	    text1 = EditorGUILayout.TextField("Search Pattern", text1);
@@ -77,7 +82,7 @@ public class GrepR : EditorWindow
 
         if (path == null) path = ".";
 
-        //	Debug.Log("path="+path);
+     //   	Debug.Log("path="+path);
         bool isDirectory = File.GetAttributes(path).HasFlag(FileAttributes.Directory);
         if (isDirectory == false) return;
         text2 = path;
@@ -92,9 +97,10 @@ public class GrepR : EditorWindow
         cnt++;
 
 	    GUILayout.BeginHorizontal("box");
-        regsw = GUILayout.Toggle(regsw, "Regexp");
+	    regsw = GUILayout.Toggle(regsw, "Regexp");
 	    ignoreCase = GUILayout.Toggle(ignoreCase, "IgnoreCase");
 	    verbose = GUILayout.Toggle(verbose, "Verbose");
+	    toConsole = GUILayout.Toggle(toConsole, "Console");	    
 	    GUILayout.EndHorizontal();
 	    GUILayout.BeginHorizontal("box");
         if (GUILayout.Button("Find"))
@@ -126,10 +132,14 @@ public class GrepR : EditorWindow
         {
             wordWrap = true,
             richText = true,
-
+	        
         };
+	    //    style = (GUIStyle)"CN Message";
 
         _scrollPosition = EditorGUILayout.BeginScrollView(_scrollPosition, GUILayout.MaxWidth(1000));
+	    //if (toConsole) {
+	    //   Debug.Log(log);
+	    //	}
         log = EditorGUILayout.TextArea(log, style, GUILayout.ExpandHeight(true));
 	    EditorGUILayout.EndScrollView();
         
@@ -139,6 +149,10 @@ public class GrepR : EditorWindow
 		    UnityEditor.EditorPrefs.SetString("GrepRPath", text4);
 	    if (oldtext3 != text3)
 	        UnityEditor.EditorPrefs.SetString("GrepRFilePat", text3);
+	    if (oldtoConsole != toConsole)
+	    	 UnityEditor.EditorPrefs.SetBool("GrepRtoConsole", toConsole);
+	    
+	    
     }
 
 	bool running = false;
@@ -182,7 +196,7 @@ public class GrepR : EditorWindow
 	        count +=   list.Count;
             for (int i = 0; i < list.Count; i++)
             {
-
+	            if(toConsole) Debug.Log(list[i]);
                 log += list[i];
                 log += "\n";
             }
@@ -252,5 +266,46 @@ public class GrepR : EditorWindow
 		return task.Result;
     }
 
+#if false
+	void OnEnable() {
+	    EditorGUI.hyperLinkClicked += EditorGUI_hyperLinkClicked;
+	}
+
+	
+	private void EditorGUI_hyperLinkClicked(EditorWindow window, HyperLinkClickedEventArgs args)
+    {
+        if (useExtEditor && window.titleContent.text == "GrepR")
+        {
+            var hyperLinkData = args.hyperLinkData;
+            var path = hyperLinkData["href"];
+            var line = hyperLinkData["line"];
+	    var lineNumber = int.Parse(line);
+            Debug.Log($"href: {path}, line: {line}");
+	        UnityEditorInternal.InternalEditorUtility.OpenFileAtLineExternal(path, lineNumber);
+	        
+        }
+	}
+	
+	private static void EditorGUI_OpenFileOnHyperLinkClicked(EditorWindow window, UnityEditor.HyperLinkClickedEventArgs args)
+	{
+	string path;
+	if (!args.hyperLinkData.TryGetValue("href", out path))
+	return;
+	string lineString;
+	args.hyperLinkData.TryGetValue("line", out lineString);
+	int line = -1;
+	Int32.TryParse(lineString, out line);
+
+	var sanitizedPath = path.Replace('\\', '/');
+
+	if (!String.IsNullOrEmpty(sanitizedPath))
+	{
+	if (Uri.IsWellFormedUriString(sanitizedPath, UriKind.Absolute))
+	Application.OpenURL(path);
+	else
+	LogEntries.OpenFileOnSpecificLineAndColumn(path, line, -1);
+	}
+	}
+#endif
 }
 }
