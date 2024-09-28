@@ -8,6 +8,8 @@ Unity 2022: it works well
 
 Unity 2023: cursor not located to the right position
 
+Unity 6000: cursor not located to the right position
+
 # Install
 Download grepr.unitypackage from repository (as raw data)
 Import grepr.unitypackage. 
